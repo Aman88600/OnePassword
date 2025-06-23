@@ -7,10 +7,13 @@
 </head>
 <body>
     <h1>One Password</h1>
-    <form action="{% url 'onepass:index' %}" method="post">
+    <form action="{% url 'onepass:login_page' %}" method="post">
         {% csrf_token %}
-        <textarea name="data" id="data"></textarea>
-        <button type="submit">Click</button>
+        <button type="submit">Log In</button>
+    </form>
+    <form action="{% url 'onepass:signup_page' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Sign Up</button>
     </form>
 </body>
 </html>
