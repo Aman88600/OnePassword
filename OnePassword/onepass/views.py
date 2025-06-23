@@ -6,7 +6,17 @@ def index(request):
     return render(request, "onepass/index.html")
 
 def login_page(request):
-
+    if request.method == "POST":
+        try:
+            user_name = request.POST.get("user_name")
+            password = request.POST.get("password")
+            user = onepass_users.objects.get(user_name=user_name)
+            if user.password == password:
+                return render(request, "onepass/dashboard.html")
+            else:
+                return render(request, "onepass/login_page.html")
+        except onepass_users.DoesNotExist:
+            return render(request, "onepass/login_page.html")
     return render(request, "onepass/login_page.html")
 
 def signup_page(request):

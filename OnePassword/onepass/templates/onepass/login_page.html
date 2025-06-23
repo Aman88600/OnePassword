@@ -7,5 +7,13 @@
 </head>
 <body>
     <h1>Login</h1>
+    <form action="{% url 'onepass:login_page' %}" method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="username" name="user_name">
+        <br>
+        <input type="password" placeholder="password" name="password">
+        <br>
+        <button type="submit">Click</button>
+    </form>
 </body>
 </html>
